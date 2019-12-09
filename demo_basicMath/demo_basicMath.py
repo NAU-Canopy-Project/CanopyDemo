@@ -14,10 +14,18 @@ content = []
 for line in file:
     content.append(line)
 
+#list store the average
 mean = []
+
+#sum of each row
 sum = 0
+
+#number of each row
 num = 0
+
+#averger of each row
 average = 0
+
 #get the mean
 for row in range(0, len(content)):
     sum = 0
