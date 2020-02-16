@@ -5,43 +5,6 @@
   </title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
-  <script>
-  function onSelectChange()
-  {
-    if( document.getElementById( "AnalysisID" ).value == "1" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "First Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "2" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Second Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "3" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Third Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "4" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Fourth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "5" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Fifth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "6" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Sixth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "7" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Seventh Analysis";
-    }
-    else
-    {
-      document.getElementByID( "AnalysisOutput" ).innerHTML = "Error";
-    }
-  }
-  </script>
 </head>
 
 <body>
@@ -49,6 +12,18 @@
 
   <table>
     <tr>
+      <td></td>
+
+      <td>
+        <select>
+          <option value="" select hidden>Choose Analysis</option>
+          <option value="">Number of Observations</option>
+          <option value="">Time of Year</option>
+          <option value="">Density of Observations</option>
+          <option value="">Average Canopy Height</option>
+          <option value="">Standard Deviation of Canopy Height</option>
+          <option value="">Data Quality</option>
+          <option value="">Forest Structures</option>
       <td>
         <select>
           <option value="" select hidden>Choose Country</option>
@@ -67,25 +42,13 @@
         </select>
       </td>
 
-      <td>
-        <select onchange="onSelectChange()" id="AnalysisID">
-          <option value="0" select hidden>Choose Analysis</option>
-          <option value="1">Number of Observations</option>
-          <option value="2">Time of Year</option>
-          <option value="3">Density of Observations</option>
-          <option value="4">Average Canopy Height</option>
-          <option value="5">Standard Deviation of Canopy Height</option>
-          <option value="6">Data Quality</option>
-          <option value="7">Forest Structures</option>
-        </select>
-      </td>
-
     <tr>
       <td>
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d39950127.073273465!2d-46.63632217625031!3d-30.198129370360146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1575848425515!5m2!1sen!2sus"
         width="800" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
       </td>
 
+      <td><img src="/static/samplegraph.png" alt="Sample graph output"></td>
       <td>
         <p id="AnalysisOutput">Output appears here</p>
       </td>
