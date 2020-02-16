@@ -4,6 +4,7 @@
     Tech Demo
   </title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 
 <body>
@@ -23,6 +24,21 @@
           <option value="">Standard Deviation of Canopy Height</option>
           <option value="">Data Quality</option>
           <option value="">Forest Structures</option>
+      <td>
+        <select>
+          <option value="" select hidden>Choose Country</option>
+          <option value="">Argentina</option>
+          <option value="">Bolivia</option>
+          <option value="">Brazil</option>
+          <option value="">Chile</option>
+          <option value="">Colombia</option>
+          <option value="">Ecuador</option>
+          <option value="">Guyana</option>
+          <option value="">Paraguay</option>
+          <option value="">Peru</option>
+          <option value="">Suriname</option>
+          <option value="">Uruguay</option>
+          <option value="">Venezuela</option>
         </select>
       </td>
 
@@ -33,6 +49,9 @@
       </td>
 
       <td><img src="/static/samplegraph.png" alt="Sample graph output"></td>
+      <td>
+        <p id="AnalysisOutput">Output appears here</p>
+      </td>
     </tr>
 
     <tr>
