@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="50dd6d90-ca2e-4a69-9b35-c37976107ffb" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Xb2LA53WlStSpe2KuwG4UVHyff" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\60280\PycharmProjects\LinkStatisticFunction" />
+      <recent name="C:\Users\60280\PycharmProjects\LinkStatisticFunction\templates" />
+      <recent name="C:\Users\60280\PycharmProjects\LinkStatisticFunction\static" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="LinkStatisticFunction" type="Python.FlaskServer">
+      <module name="LinkStatisticFunction" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="50dd6d90-ca2e-4a69-9b35-c37976107ffb" name="Default Changelist" comment="" />
+      <created>1581300414184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581300414184</updated>
+      <workItem from="1581300439994" duration="128000" />
+      <workItem from="1581300584762" duration="1474000" />
+      <workItem from="1581304999015" duration="6435000" />
+      <workItem from="1581311470571" duration="5000" />
+      <workItem from="1581311635542" duration="26000" />
+      <workItem from="1581356359330" duration="75000" />
+      <workItem from="1581363125031" duration="809000" />
+      <workItem from="1581381553542" duration="166000" />
+      <workItem from="1581383678066" duration="117000" />
+      <workItem from="1581712511448" duration="592000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="190" key="FileChooserDialogImpl" timestamp="1581308641678">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1581308641678" />
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1581383794684">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1581383794684" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1581383794684">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1581383794684" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1581383794684">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1581383794684" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1581383794684">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1581383794684" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1581712515735">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1581712515735" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LinkStatisticFunction$LinkStatisticFunction.coverage" NAME="LinkStatisticFunction Coverage Results" MODIFIED="1581383695405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
