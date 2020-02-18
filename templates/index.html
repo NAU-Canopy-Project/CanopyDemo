@@ -4,44 +4,6 @@
     Tech Demo
   </title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
-  <script>
-  function onSelectChange()
-  {
-    if( document.getElementById( "AnalysisID" ).value == "1" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "First Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "2" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Second Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "3" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Third Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "4" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Fourth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "5" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Fifth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "6" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Sixth Analysis";
-    }
-    if( document.getElementById( "AnalysisID" ).value == "7" )
-    {
-      document.getElementById( "AnalysisOutput" ).innerHTML = "Seventh Analysis";
-    }
-    else
-    {
-      document.getElementByID( "AnalysisOutput" ).innerHTML = "Error";
-    }
-  }
-  </script>
 </head>
 
 <body>
@@ -93,9 +55,11 @@
 
     <tr>
       <td>
-        <a href="">
-          Upload Shapefile
-        </a>
+        <form action="" class="shapefileForm" method="POST" enctype="multipart/form-data">
+          <label for="shapefileInput">Upload Shapefile</label>
+          <input type="file" id="shapefileInput" name="shapefileInput">
+          <input type="submit" value="Submit Shapefile">
+        </form>
       </td>
 
       <td>
