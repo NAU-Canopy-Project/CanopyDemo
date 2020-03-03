@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Linked Functions</title>
+    <title>Canopy Project Demo</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 	<style>
 		.main{
 			display: inline-flex;
 		}
 		body{
-			background-image: url(bg.jpg);
+			background-image: url(static/bg.jpg);
 		}
 	</style>
 </head>
 <body>
-<div align="right">
+<div align="center">
   <br>
 	<br>
+  <h1>The Canopy Project</h1>
 	<br>
 	<br>
-
 </div>
 <div class="main" style="margin:40px 20px 50px 50px; ">
 <form method="POST" enctype="multipart/form-data">
@@ -46,21 +46,29 @@
 
     <br>
     <br>
-    <select name="function">
+    <br>
+    <label for="function">Select function(s)</label>
+    <br>
+    <select name="function" multiple>
         <option value="0" select hidden>Choose Analysis</option>
         <option value="1">Number of Observations</option>
         <option value="2">Time of Year</option>
         <option value="3">Density of Observations</option>
-        <option value="4">Average Canopy Height</option>
-        <option value="5">Standard Deviation of Canopy Height</option>
-        <option value="6">Data Quality</option>
-        <option value="7">Forest Structures</option>
+        <option value="4">Standard Deviation of Density of Observations</option>
+        <option value="5">Average Canopy Height</option>
+        <option value="6">Standard Deviation of Canopy Height</option>
+        <option value="7">Data Quality</option>
+        <option value="8">Classify Forest Types</option>
+        <option value="9">Raw Data (No Analysis)</option>
     </select>
     <br>
     <br>
+    <br>
+    <br>
+    <input type="email" id="emailInput" name="emailInput" placeholder="Enter email address">
+    <br>
+    <br>
     <input type="submit" value="confirm">
-	<br>
-	<a href="">Download GEDI Data </a>
 </form>
 
 </div>

@@ -21,11 +21,11 @@ def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("/", methods = ["POST"] )
+@app.route("/", methods = ["GET", "POST"] )
 def readShapefile():
     geomValid = True
     countryVal = request.form["country"]
-    functionVal = request.form["function"]
+    functionList = request.form.getlist("function")
     if request.method == "POST":
         if request.files["shapefileInput"].filename == "":
             if countryVal == "0":
@@ -92,19 +92,26 @@ def readShapefile():
         Area=100
         tempHolder = None
 
-        if functionVal == "1":
+        if "1" in functionList:
             tempHolder = StatisticFunctions.NumberofObservations(ObList)
+            emailReceiver = request.form["emailInput"]
+            message = Message("Test",
+                    sender = "naucanopyproject@gmail.com",
+                    recipients = [emailReceiver])
+            with app.open_resource("static\\bg.jpg") as fp:
+                message.attach("static\\bg.jpg", "img/png", fp.read())
+            mail.send(message)
             return render_template("success.html")
-        elif functionVal == "3":
+        if "3" in functionList:
             tempHolder = StatisticFunctions.DensityofObservations(ObList,Area)
             return render_template("succes.html")
-        elif functionVal == "4":
+        if "4" in functionList:
             tempHolder = StatisticFunctions.MeanVegetationHeight(ObList)
             return render_template("success.html")
-        elif functionVal == "5":
+        if "5" in functionList:
             tempHolder = StatisticFunctions.StandardDeviationOfVegetationHeight(ObList)
             return render_template("success.html")
-        elif functionVal == "6":
+        if "6" in functionList:
             tempHolder = StatisticFunctions.DataQuality(ObList)
         else:
             return render_template('failure.html')
