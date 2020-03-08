@@ -18,12 +18,6 @@ mail = Mail(app)
 
 @app.route("/")
 def index():
-#    message = Message("Test",
-#            sender = "naucanopyproject@gmail.com",
-#            recipients = ["naucanopyproject@gmail.com"])
-#    with app.open_resource("static\\samplegraph.png") as fp:
-#        message.attach("static\\samplegraph.png", "img/png", fp.read())
-#    mail.send(message)
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
@@ -35,34 +29,34 @@ def readShapefile():
     if request.method == "POST":
         if request.files["shapefileInput"].filename == "":
             if countryVal == "0":
-                return render_template("failure.html")
+                countryVal = 0
             else:
                 selectedCountry = request.form["country"]
                 os.chdir("\\shapefiles")
                 if selectedCountry == "ARG":
-                    currentShapefile = glob.glob("*_ARG_shp")[0]
+                    currentShapefile = glob.glob("*_ARG_shp")
                 elif selectedCountry == "BOL":
-                    currentShapefile = glob.glob("*_BOL_shp")[0]
+                    currentShapefile = glob.glob("*_BOL_shp")
                 elif selectedCountry == "BRA":
-                    currentShapefile = glob.glob("*_BRA_shp")[0]
+                    currentShapefile = glob.glob("*_BRA_shp")
                 elif selectedCountry == "CHL":
-                    currentShapefile = glob.glob("*_CHL_shp")[0]
+                    currentShapefile = glob.glob("*_CHL_shp")
                 elif selectedCountry == "COL":
-                    currentShapefile = glob.glob("*_COL_shp")[0]
+                    currentShapefile = glob.glob("*_COL_shp")
                 elif selectedCountry == "ECU":
-                    currentShapefile = glob.glob("*_ECU_shp")[0]
+                    currentShapefile = glob.glob("*_ECU_shp")
                 elif selectedCountry == "GUY":
-                    currentShapefile = glob.glob("*_GUY_shp")[0]
+                    currentShapefile = glob.glob("*_GUY_shp")
                 elif selectedCountry == "PRY":
-                    currentShapefile = glob.glob("*_PRY_shp")[0]
+                    currentShapefile = glob.glob("*_PRY_shp")
                 elif selectedCountry == "PER":
-                    currentShapefile = glob.glob("*_PER_shp")[0]
+                    currentShapefile = glob.glob("*_PER_shp")
                 elif selectedCountry == "SUR":
-                    currentShapefile = glob.glob("*_SUR_shp")[0]
+                    currentShapefile = glob.glob("*_SUR_shp")
                 elif selectedCountry == "URY":
-                    currentShapefile = glob.glob("*_URY_shp")[0]
+                    currentShapefile = glob.glob("*_URY_shp")
                 elif selectedCountry == "VEN":
-                    currentShapefile = glob.glob("*_VEN_shp")[0]
+                    currentShapefile = glob.glob("*_VEN_shp")
                 os.chdir("..")
         else:
             # Take in file string
@@ -104,21 +98,11 @@ def readShapefile():
 
         if "1" in functionList:
             result[1] = StatisticFunctions.NumberofObservations(ObList)
-            emailReceiver = request.form["emailInput"]
-            message = Message("Test",
-                    sender = "naucanopyproject@gmail.com",
-                    recipients = [emailReceiver])
-            with app.open_resource("static\\bg.jpg") as fp:
-                message.attach("static\\bg.jpg", "img/png", fp.read())
-            mail.send(message)
-
             output.writeCSV(result)
-
         if "3" in functionList:
             result[3] = StatisticFunctions.DensityofObservations(ObList,Area)
             output.writeCSV(result)
         if "4" in functionList:
-
             result[4] = StatisticFunctions.StandardDeviationOfDensityOfObservations(ObList)
             output.writeCSV(result)
         if "5" in functionList:
@@ -130,9 +114,15 @@ def readShapefile():
         if "7" in functionList:
             result[7] = StatisticFunctions.DataQuality(ObList)
             output.writeCSV(result)
-        else:
-            return render_template('success.html')
 
+
+        emailReceiver = request.form["emailInput"]
+        message = Message("Test",
+                sender = "naucanopyproject@gmail.com",
+                recipients = [emailReceiver])
+        with app.open_resource("static\\bg.jpg") as fp:
+            message.attach("static\\bg.jpg", "img/png", fp.read())
+        #mail.send(message)
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
