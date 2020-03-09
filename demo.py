@@ -14,6 +14,7 @@ import output
 
 import csv
 app = Flask(__name__, template_folder = 'templates')
+app.testing = False
 mail = Mail(app)
 
 @app.route("/")
