@@ -127,7 +127,7 @@ def readShapefile():
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
-    return render_template("success.html")
+    return ("", 204)
 
 if __name__ == "__main__":
     app.run(debug=True)
