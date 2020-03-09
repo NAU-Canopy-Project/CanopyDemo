@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, request
+from flask import Flask, request, render_template, request, url_for
 from flask_mail import Mail
 from flask_mail import Message
 import geopandas as gpd
@@ -21,7 +21,7 @@ def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("/success", methods = ["GET", "POST"] )
+@app.route("/success/", methods = ["GET", "POST"] )
 def readShapefile():
     geomValid = True
     countryVal = request.form["country"]
@@ -85,7 +85,8 @@ def readShapefile():
             # Take first element of series (True or False)
             if not (readfile.geometry.is_valid[0]):
                 geomValid = False
-
+            os.chdir("..")
+            os.chdir("..")
         # Send <<currentShapefile>> (selected variable) to Monsoon here
         # Demo stats functions here also
         ObList = [1, 21, 4, 4, 5, 1, 54, 75, 2, 12, 43, 2, 12, 21, 34]
