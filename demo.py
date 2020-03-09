@@ -14,7 +14,17 @@ import output
 
 import csv
 app = Flask(__name__, template_folder = 'templates')
-app.testing = False
+
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": os.environ['email'],
+    "MAIL_PASSWORD": os.environ['password']
+}
+
+app.config.update(mail_settings)
 mail = Mail(app)
 
 @app.route("/")
