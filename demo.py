@@ -21,7 +21,7 @@ def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("/success.html", methods = ["GET", "POST"] )
+@app.route("/success.html/", methods = ["GET", "POST"] )
 def readShapefile():
     geomValid = True
     countryVal = request.form["country"]
