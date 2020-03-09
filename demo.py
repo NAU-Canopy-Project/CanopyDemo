@@ -123,11 +123,11 @@ def readShapefile():
                 recipients = [emailReceiver])
         with app.open_resource("static\\bg.jpg") as fp:
             message.attach("static\\bg.jpg", "img/png", fp.read())
-        #mail.send(message)
+        mail.send(message)
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
-    return ("", 204)
+    return render_template("success.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
