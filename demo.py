@@ -29,7 +29,7 @@ def readShapefile():
     if request.method == "POST":
         if request.files["shapefileInput"].filename == "":
             if countryVal == "0":
-                countryVal = 0
+                return render_template("",204)
             else:
                 selectedCountry = request.form["country"]
                 os.chdir("\\shapefiles")
@@ -126,7 +126,7 @@ def readShapefile():
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
-    return ( '', 204 )
+    return render_template("success.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
