@@ -23,7 +23,7 @@ data = gpd.read_file(fp)
 # cover = "Total canopy cover, defined as the percent of the ground covered by the vertical projection of canopy material"
 
 # assuming current most useful col for clustering is cover and pai
-# assuming current most useful col for stat. func. is rh100 and 12b_quality_flag
+# assuming current most useful col for stat. func. is rh100 and l2b_quality_flag
 
 
 # to read everything in a column (in this case, pai) to an array and use (print) the array
