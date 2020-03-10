@@ -18,6 +18,7 @@ from sklearn import preprocessing
 
 import matplotlib.pyplot as plt
 from pandas import DataFrame
+import seaborn as sns
 
 
 # grab the GEDI data that was unpacked into a geodataframe 
@@ -93,7 +94,9 @@ crv = []
 
 ilist = []
 
-for i in range(3,500,1):
+# originally goes to 500, but that took at least an hour to compute.
+# shortened just for tech demo
+for i in range(3,250,1):
 
     clusterer = hdbscan.HDBSCAN(min_cluster_size=i, min_samples=i, gen_min_span_tree=True, allow_single_cluster=True)
 
@@ -132,6 +135,29 @@ for i in range(1,csize,1):
     print(ctab)
 
     print(clusterer.relative_validity_)
+
+
+# TODO: revisit
+# attempt at plotting for height based on cluster classes
+# df = pd.DataFrame(list(zip(cluster_list, height_list)), columns = ['cluster_bin', 'height'])
+# fig = sns.boxplot(x="cluster_bin", y="height", data=df)
+
+
+# best attempt at a working graph for the tech demo
+df = pd.DataFrame(ctab)
+df.plot.box(grid='True')
+
+plt.savefig('example.png')
+
+plt.show()
+
+
+
+
+
+
+
+
 
 
 
