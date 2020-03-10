@@ -106,25 +106,31 @@ def readShapefile():
         #list store the result
         result = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
+        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        fp = os.path.join(THIS_FOLDER, 'unpack/unpacked_files/test.shp')
 
+        data = gpd.read_file(fp)
+        height_array = []
+        for index, row in data.iterrows():
+            height_array.append(row['rh100'])
 
         if "1" in functionList:
-            result[1] = StatisticFunctions.NumberofObservations(ObList)
+            result[0] = StatisticFunctions.NumberofObservations(ObList)
             output.writeCSV(result)
         if "3" in functionList:
-            result[3] = StatisticFunctions.DensityofObservations(ObList,Area)
+            result[2] = StatisticFunctions.DensityofObservations(ObList,Area)
             output.writeCSV(result)
         if "4" in functionList:
-            result[4] = StatisticFunctions.StandardDeviationOfDensityOfObservations(ObList)
+            result[3] = StatisticFunctions.StandardDeviationOfDensityOfObservations(ObList)
             output.writeCSV(result)
         if "5" in functionList:
-            result[5] = StatisticFunctions.MeanVegetationHeight(ObList)
+            result[4] = StatisticFunctions.MeanVegetationHeight(height_array)
             output.writeCSV(result)
         if "6" in functionList:
-            result[6] = StatisticFunctions.StandardDeviationOfVegetationHeight(ObList)
+            result[5] = StatisticFunctions.StandardDeviationOfVegetationHeight(height_array)
             output.writeCSV(result)
         if "7" in functionList:
-            result[7] = StatisticFunctions.DataQuality(ObList)
+            result[6] = StatisticFunctions.DataQuality(ObList)
             output.writeCSV(result)
 
 
