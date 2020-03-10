@@ -1,27 +1,137 @@
-# tutorial followed:
-# https://towardsdatascience.com/machine-learning-algorithms-part-12-hierarchical-agglomerative-clustering-example-in-python-1e18e0075019
+import os
 
-# also tried to follow:
-# https://stackabuse.com/hierarchical-clustering-with-python-and-scikit-learn/
-# uses the same data set and general idea, but I had a harder time executing the code
-
-import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
+import itertools
+from scipy.stats import gamma
+from scipy.stats import norm
+import pandas as pd
+import geopandas as gpd
+ 
+import hdbscan
+
+
 from sklearn.cluster import AgglomerativeClustering
-import scipy.cluster.hierarchy as sch
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_samples, silhouette_score
+from sklearn.metrics import adjusted_rand_score
+from sklearn import preprocessing
 
-dataset = pd.read_csv('./data.csv')
+import matplotlib.pyplot as plt
+from pandas import DataFrame
 
-X = dataset.iloc[:, [3, 4]].values
 
-model = AgglomerativeClustering(n_clusters=5, affinity='euclidean', linkage='ward')
-model.fit(X)
-labels = model.labels_
+# grab the GEDI data that was unpacked into a geodataframe 
+# data columns: 'shot_number','rh100','fhd_normal','cover','pai','l2b_quality_flag'
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+fp = os.path.join(THIS_FOLDER, '../unpack/unpacked_files/test.shp')
+ix = gpd.read_file(fp)
 
-plt.scatter(X[labels==0, 0], X[labels==0, 1], s=50, marker='o', color='red')
-plt.scatter(X[labels==1, 0], X[labels==1, 1], s=50, marker='o', color='blue')
-plt.scatter(X[labels==2, 0], X[labels==2, 1], s=50, marker='o', color='green')
-plt.scatter(X[labels==3, 0], X[labels==3, 1], s=50, marker='o', color='purple')
-plt.scatter(X[labels==4, 0], X[labels==4, 1], s=50, marker='o', color='orange')
-plt.show()
+
+# The code below assumes that you have a dataframe called ix with all the data columns (PAI_5, PAI_10, …, RH100)
+
+# Rescale rh100 so that it's in meters
+
+ix.rh100 = ix.rh100/100.0
+
+
+# Get only power beams
+
+pbs = [u'BEAM0101', u'BEAM0110', u'BEAM1000', u'BEAM1011']
+
+ix = ix[ix['beam'].isin(pbs)]
+
+ 
+
+# Filter out very tall footprints
+
+# ix = ix.loc[ix.rh100<=60,]
+# attempted to fit in ix2 here, was complained as "undefined"
+ix2 = ix.loc[ix.rh100<=60,]
+
+ 
+
+# List of PAI column names
+
+painames = ['pai_' + str(z) for z in range(5,65,5)]
+
+ 
+
+# Define function to calculate evenness metric from PAI columns
+
+def evenness(avec):
+
+    avec = avec[avec!=0]
+
+    p = avec/np.sum(avec)
+
+    even = np.sum(p*np.log(p))*-1
+
+    return(even)
+
+
+# Calculate evenness metric that indicates whether the canopy is clumped or evenly distributed
+
+X = ix2[painames].apply(lambda x: evenness(x), axis=1)
+
+ix2['even'] = X/np.log(len(painames))
+
+ 
+
+# Standardize columns for clustering
+
+transformer = preprocessing.RobustScaler().fit(ix2[['even','pai','rh100']])
+
+X = transformer.transform(ix2[['even','pai','rh100']])
+
+ 
+
+# Try many different minimum cluster sizes, keeping track of the relative validity index
+
+# This will run slow for large datasets
+
+crv = []
+
+ilist = []
+
+for i in range(3,500,1):
+
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=i, min_samples=i, gen_min_span_tree=True, allow_single_cluster=True)
+
+    clusterer.fit(X)
+
+    P = clusterer.labels_
+
+    ilist.append(i)
+
+    m = clusterer.relative_validity_
+
+    crv.append(m)
+
+    print(m, i)
+
+ 
+
+# Get minimum cluster size that maximizes relative validity index
+
+# and cluster on that
+
+csize = ilist[crv.index(np.max(crv))]
+
+for i in range(1,csize,1):
+
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=csize, min_samples=i, gen_min_span_tree=True, allow_single_cluster=True)
+
+    clusterer.fit(X)
+
+    P = clusterer.labels_
+
+    unique, counts = np.unique(P, return_counts=True)
+
+    ctab = np.asarray((unique, counts)).T
+
+    print(ctab)
+
+    print(clusterer.relative_validity_)
+
+
+
