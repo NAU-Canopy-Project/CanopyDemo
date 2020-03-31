@@ -32,7 +32,7 @@ def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("success.html", methods = ["GET", "POST"] )
+@app.route("/", methods = ["GET", "POST"] )
 def readShapefile():
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
