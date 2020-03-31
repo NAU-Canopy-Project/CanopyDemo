@@ -27,12 +27,12 @@ app = Flask(__name__, template_folder = 'templates')
 # app.config.update(mail_settings)
 # mail = Mail(app)
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("/success.html/", methods = ["GET", "POST"] )
+@app.route("success.html", methods = ["GET", "POST"] )
 def readShapefile():
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
