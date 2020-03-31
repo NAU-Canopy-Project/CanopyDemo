@@ -148,7 +148,7 @@ def readShapefile():
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
-    return ("", 204)
+    return redirect(request.url)
 
 if __name__ == "__main__":
     app.run(debug=True)
