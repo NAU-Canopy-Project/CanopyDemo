@@ -8,15 +8,15 @@ import geopandas as gpd
 
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
-# edit this line of code to the new path from your file
-# only need to edit the part in 'unpacked_files/test.shp' to the path you'd take to get to the test.shp file
+# edit this line of code to the new path from your file, currently grabs from Colombia only
+# only need to edit the part in 'unpacked_COL/test.shp' to the path you'd take to get to the test.shp file
 # keep the THIS_FOLDER part
-fp = os.path.join(THIS_FOLDER, 'unpacked_files/test.shp')
+fp = os.path.join(THIS_FOLDER, 'unpacked_0/test.shp')
 
 data = gpd.read_file(fp)
 
 
-# available column names: 'shot_number','rh100','fhd_normal','cover','pai','l2b_quality_flag'
+# available column names: 'shot_number','rh100','fhd_normal','cover','pai','l2b_QF'
 
 # rh100 = "Height above ground of the received waveform signal start", assuming just = height
 # fhd_normal = "Foliage height diversity index calculated by vertical foliage profile normalized by total plant area index"
