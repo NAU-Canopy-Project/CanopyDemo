@@ -1,3 +1,0 @@
-No points in zone for file /Users/maria/Desktop/School/Capstone/git/CanopyDemo/unpack/GEDI_files/GEDI02_B_2019191051321_O03251_T04484_02_001_01.h5
-No points in zone for file /Users/maria/Desktop/School/Capstone/git/CanopyDemo/unpack/GEDI_files/GEDI02_B_2019191003500_O03248_T03058_02_001_01.h5
-No points in zone for file /Users/maria/Desktop/School/Capstone/git/CanopyDemo/unpack/GEDI_files/GEDI02_B_2019191034034_O03250_T00214_02_001_01.h5
