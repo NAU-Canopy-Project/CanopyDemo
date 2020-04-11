@@ -27,12 +27,12 @@ app = Flask(__name__, template_folder = 'templates')
 # app.config.update(mail_settings)
 # mail = Mail(app)
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/")
 def index():
     return render_template("index.html")
 
 # Takes in shapefile, tests validity
-@app.route("/", methods = ["GET", "POST"] )
+@app.route("/success.html/", methods = ["GET", "POST"] )
 def readShapefile():
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
@@ -42,7 +42,7 @@ def readShapefile():
     if request.method == "POST":
         if request.files["shapefileInput"].filename == "":
             if countryVal == "0":
-                return ("",204)
+                return render_template("",204)
             else:
                 selectedCountry = request.form["country"]
                 fp = os.path.join(THIS_FOLDER, 'shapefiles')
@@ -148,7 +148,7 @@ def readShapefile():
 
     # Must return something
     # Return ( '', 204 ) makes sure the website does not change pages
-    return redirect(request.url)
+    return render_template("success.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,14 +1,5 @@
 import numpy as np
 
-#observation list
-ObList=[1,21,4,4,5,1,54,75,2,12,43,2,12,21,34]
-
-#the list of the quality of the observations
-qualityList = [1,32,3,54,5,32,2,68,97,3,5,32,5,7]
-
-#the list of the height of the vegetation
-heightList= [4,53,5,7,36,36,4,2,43,6,43,2,4,6,4,3,21]
-
 #Number of Observations - The total number of lidar pings that were performed in that area
 def NumberofObservations(list):
     num = 0
